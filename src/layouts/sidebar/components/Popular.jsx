@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { Popularpost } from './Popularpost'
+import { getPopularPosts } from "./../../../api/API"
 
-export const Popular = () => {
-	const [topArticles, setTopArticles] = useState([])
+export default function Popular() {
+	const [articles, setArticles] = useState(() => [])
 
-	const pageSize = 4
 
 	useEffect(() => {
 		const getNews = async () => {
-			const fetchNews = await fetch(
-				`https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=bd732aaa020f4dd2a31b2de5a87825d6&pageSize=${pageSize}`
-			)
-			const newsJSON = await fetchNews.json()
-			setTopArticles(newsJSON.articles)
+
+			try {
+				const apiResponse = await getPopularPosts()
+
+				if (apiResponse.status !== 200) {
+					throw new Error('Something went wrong')
+				}
+
+				const { articles: Article } = apiResponse.data
+
+				setArticles(Article)
+
+			} catch (err) {
+				console.log(err)
+			}
 		}
 
 		getNews()
@@ -26,7 +36,7 @@ export const Popular = () => {
 			<div className="popular-div">
 				<div className="popular-title focus-title"> Top Technology News</div>
 				<div className="popular-post">
-					{topArticles?.map((element, index) => {
+					{articles?.map((element, index) => {
 						return (
 							<Popularpost
 								key={'popularPost' + index}

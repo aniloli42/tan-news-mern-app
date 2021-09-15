@@ -28,7 +28,7 @@ export const Popularpost = props => {
 				<div className="post-meta">
 					<h2 title={title}>
 						<a href={url}>
-							{title.length > 100 ? title.slice(0, 60) + '...' : title}
+							{title.length > 60 ? title.slice(0, 60) + '...' : title}
 						</a>
 					</h2>
 					<div className="post-attributes">

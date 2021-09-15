@@ -22,6 +22,10 @@ export default function Header(props) {
     };
   }, []);
 
+  const scrollTop = () => {
+    document.body.scrollIntoView()
+  }
+
   return (
     <header>
       <div className="header-top">
@@ -36,25 +40,25 @@ export default function Header(props) {
       </div>
       <nav id="navBar">
         <div className="nav-item">
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={scrollTop}>Home</Link>
         </div>
         <div className="nav-item">
-          <Link to="/business">Business</Link>
+          <Link to="/business" onClick={scrollTop}>Business</Link>
         </div>
         <div className="nav-item">
-          <Link to="/health">Health</Link>
+          <Link to="/health" onClick={scrollTop}>Health</Link>
         </div>
         <div className="nav-item">
-          <Link to="/science">Science</Link>
+          <Link to="/science" onClick={scrollTop}>Science</Link>
         </div>
         <div className="nav-item">
-          <Link to="/entertainment">Entertainment</Link>
+          <Link to="/entertainment" onClick={scrollTop}>Entertainment</Link>
         </div>
         <div className="nav-item">
-          <Link to="/technology">Technology</Link>
+          <Link to="/technology" onClick={scrollTop}>Technology</Link>
         </div>
         <div className="nav-item">
-          <Link to="/sports">Sports</Link>
+          <Link to="/sports" onClick={scrollTop}>Sports</Link>
         </div>
       </nav>
       <hr />
