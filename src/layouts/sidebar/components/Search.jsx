@@ -1,16 +1,23 @@
-import React, { useRef } from 'react'
-// import { useHistory } from 'react-router'
+import React, { useEffect, useRef } from 'react'
+import { useHistory } from 'react-router'
 import useGlobal from '../../../context/globalContext'
 
 const Search = () => {
-	const { showError } = useGlobal()
-	// const history = useHistory()
+	const { showError, updateSearch, searchText: Text } = useGlobal()
+	const history = useHistory()
 	const searchText = useRef(null)
+	let searchedText = ""
+
+
+	useEffect(() => {
+		console.log(Text)
+		history.push('/search')
+
+		// eslint-disable-next-line
+	}, [Text])
 
 	const handleSearch = e => {
 		e.preventDefault()
-
-		console.log(searchText.current.value === '')
 
 		if (
 			searchText.current.value === '' ||
@@ -18,9 +25,12 @@ const Search = () => {
 		) {
 			return showError("Search is blank")
 		}
-		searchText.current.value = ''
+
+		searchedText = searchText.current.value
+
+		updateSearch(searchedText)
+
 		searchText.current.blur()
-		// history.push('/search')
 	}
 
 	return (

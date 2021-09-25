@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { GlobalProvider } from './context/globalContext'
 import Category from './pages/category/Category'
 import Error from './pages/error/Error'
+import Search from './pages/search/Search.jsx'
 
 function App() {
 	return (
@@ -32,6 +33,9 @@ function App() {
 						</Route>
 						<Route exact path="/sports">
 							<Category key="sports" topics="sports" />
+						</Route>
+						<Route exact path="/search">
+							<Search key="search" />
 						</Route>
 						<Route exact path="*">
 							<Error />

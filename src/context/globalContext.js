@@ -11,6 +11,7 @@ export function GlobalProvider({ children }) {
 
 	const [displayError, setDisplayError] = useState(() => false)
 	const [errorText, setErrorText] = useState('Something went wrong')
+	const [searchText, setSearchText] = useState(null)
 
 	const showError = text => {
 		setErrorText(text)
@@ -22,15 +23,21 @@ export function GlobalProvider({ children }) {
 		}, 4000)
 	}
 
+	const updateSearch = text => {
+		setSearchText(text)
+	}
+
+	const globalValue = {
+		pageSize,
+		displayError,
+		errorText,
+		showError,
+		searchText,
+		updateSearch
+	}
+
 	return (
-		<GlobalContext.Provider
-			value={{
-				pageSize,
-				displayError,
-				errorText,
-				showError
-			}}
-		>
+		<GlobalContext.Provider value={globalValue}>
 			{children}
 		</GlobalContext.Provider>
 	)

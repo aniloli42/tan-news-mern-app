@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Spinner from '../../components/Spinner.js'
-import Post from "./components/Post.js"
+import Post from "../../components/Post"
 import useGlobal from '../../context/globalContext.js'
 import checkMoreNews from '../../helpers/checkMoreNews.js'
 import { getCategoryPosts } from "../../api/API"
@@ -12,8 +12,6 @@ const Category = ({ topics }) => {
     const [articles, setArticles] = useState(() => [])
     const [page, setPage] = useState(1)
     const [totalNews, setTotalNews] = useState(0)
-
-
 
     useEffect(() => {
         async function getNews() {
@@ -33,7 +31,6 @@ const Category = ({ topics }) => {
 
                 setLoading(false)
 
-
             } catch (err) {
                 console.log(err)
             }
@@ -43,15 +40,9 @@ const Category = ({ topics }) => {
         // eslint-disable-next-line
     }, [page])
 
-
-
-
     const loadMore = () => {
         setPage(prevPage => prevPage + 1)
     }
-
-
-
 
     return (
         <>

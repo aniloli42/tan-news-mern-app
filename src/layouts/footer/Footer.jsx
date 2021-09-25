@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import DisplayError from '../../components/DisplayError/DisplayError'
+import DisplayError from '../../components/DisplayError/DisplayError.jsx'
 import useGlobal from '../../context/globalContext'
 
 
